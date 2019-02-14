@@ -1,7 +1,7 @@
 ### WebDataRocks Pivot Table integration with Angular 4 and Google Charts
 [WebDataRocks](https://www.webdatarocks.com/) is a free JavaScript library for **web reporting** and **data visualization**. 
 
-This repository holds the sample project of WebDataRocks with [Angular 4](https://angular.io/) framework and [Google Charts](https://developers.google.com/chart/). Its purpose is to show how to add a dashboard with a pivot table and charts to your Angular application quickly and easily. 
+This repository holds the sample project of **WebDataRocks** with [Angular 4](https://angular.io/) framework and [Google Charts](https://developers.google.com/chart/). Its purpose is to show how to add a dashboard with a pivot table and charts to your Angular application quickly and easily. 
 ### How to get started with WebDataRocks, Angular and Google Charts
 
 #### Step 1: Download or clone the GitHub project 
