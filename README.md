@@ -14,6 +14,7 @@ The pivot table and chart instances are already embedded in the page.
 Your application will run at `http://localhost:4200/`.
 ### Documentation
 Please refer to our tutorials to find out more details about the integration process:
+
 [Integration with Angular 4](https://www.webdatarocks.com/doc/integration-with-angular/)
 [Integration with Google Charts](https://www.webdatarocks.com/doc/integration-with-google-charts/)
 ### Advanced options
