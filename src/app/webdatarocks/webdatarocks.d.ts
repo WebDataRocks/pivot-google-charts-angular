@@ -46,6 +46,7 @@ declare namespace WebDataRocks {
     }
 
     interface Pivot {
+        googlecharts: any;
         addCalculatedMeasure(measure: Measure): void;
         addCondition(condition: ConditionalFormat): void;
         addJSON(json: Object[]): void;
