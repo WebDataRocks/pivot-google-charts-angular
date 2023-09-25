@@ -7,7 +7,7 @@ This project is also available as a [live demo](https://codesandbox.io/s/6x4zx3x
 
 ## Prerequisites
 
-- [Node.js 8 through 10](https://nodejs.org/en/)
+- [Node.js 8 through 14](https://nodejs.org/en/)
 
 ## Run the project
 1. Download or clone this project from GitHub:
