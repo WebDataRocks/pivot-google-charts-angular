@@ -1,6 +1,6 @@
 # Example of integrating WebDataRocks with the Angular framework and Google Charts 
 
-This repository contains the sample project of [WebDataRocks](https://www.webdatarocks.com/) with [Angular framework](https://angular.io/) and [Google Charts](https://developers.google.com/chart/).
+This repository contains the sample project that shows how to integrate [WebDataRocks](https://www.webdatarocks.com/) with [Angular framework](https://angular.io/) and [Google Charts](https://developers.google.com/chart/).
 
 This project is also available as a [live demo](https://codesandbox.io/s/6x4zx3xljr)!
 
