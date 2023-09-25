@@ -26,7 +26,6 @@ npm start
 You can access the project at `http://localhost:4200/`.
 
 ## Related docs
-For more details about the integration process check out the following tutorials:
 
 * [Integration with Angular 4](https://www.webdatarocks.com/doc/integration-with-angular/)
 * [Integration with Google Charts](https://www.webdatarocks.com/doc/integration-with-google-charts/)
