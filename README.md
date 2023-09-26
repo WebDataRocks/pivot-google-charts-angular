@@ -2,7 +2,7 @@
 
 This repository contains a sample project that shows how to integrate [WebDataRocks](https://www.webdatarocks.com/) with the [Angular framework](https://angular.io/) and [Google Charts](https://developers.google.com/chart/).
 
-The project is also available as a [live demo](https://codesandbox.io/s/6x4zx3xljr)!
+The project is also available as a [live demo](https://codesandbox.io/s/6x4zx3xljr).
 
 
 ## Prerequisites
@@ -27,7 +27,7 @@ You can access the project at `http://localhost:4200/`.
 
 ## Related docs
 
-* [Integration with Angular 4](https://www.webdatarocks.com/doc/integration-with-angular/)
+* [Integration with Angular](https://www.webdatarocks.com/doc/integration-with-angular/)
 * [Integration with Google Charts](https://www.webdatarocks.com/doc/integration-with-google-charts/)
 * [Google Charts: how to customize charts](https://developers.google.com/chart/interactive/docs/customizing_charts)
 
