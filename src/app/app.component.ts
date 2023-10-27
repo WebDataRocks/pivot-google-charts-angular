@@ -1,5 +1,7 @@
 import { Component, ViewChild } from "@angular/core";
-import { WebDataRocksPivot } from "./webdatarocks/webdatarocks.angular4";
+import { WebdatarocksComponent } from '@webdatarocks/ngx-webdatarocks';
+import "@webdatarocks/webdatarocks/webdatarocks.googlecharts.js"
+// import { GoogleChartComponent } from "angular-google-charts";
 
 @Component({
   selector: "app-root",
@@ -7,7 +9,7 @@ import { WebDataRocksPivot } from "./webdatarocks/webdatarocks.angular4";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  @ViewChild("pivot1") child: WebDataRocksPivot;
+  @ViewChild("pivot1") child: WebdatarocksComponent;
 
   public pivotReport = {
     dataSource: {
@@ -20,24 +22,13 @@ export class AppComponent {
     }
   };
 
-  ngOnInit() {
-    google.charts.load("current", { packages: ["corechart"] });
-    google.charts.setOnLoadCallback(() => this.onGoogleChartsLoaded());
-  }
-  onGoogleChartsLoaded() {
-    this.googleChartsLoaded = true;
-    if (this.pivotTableReportComplete) {
-      this.createGoogleChart();
-    }
-  }
-
   onPivotReady(pivot: WebDataRocks.Pivot): void {
     console.log("[ready] WebDataRocksPivot", this.child);
   }
 
   onCustomizeCell(
     cell: WebDataRocks.CellBuilder,
-    data: WebDataRocks.Cell
+    data: WebDataRocks.CellData
   ): void {
     //console.log("[customizeCell] WebDataRocksPivot");
     if (data.isClassicTotalRow) cell.addClass("fm-total-classic-r");
@@ -45,38 +36,29 @@ export class AppComponent {
     if (data.isGrandTotalColumn) cell.addClass("fm-grand-total-c");
   }
 
-  pivotTableReportComplete: boolean = false;
   googleChartsLoaded: boolean = false;
 
   onReportComplete(): void {
     this.child.webDataRocks.off("reportcomplete");
-    this.pivotTableReportComplete = true;
     this.createGoogleChart();
   }
 
   createGoogleChart() {
-    if (this.googleChartsLoaded) {
-      this.child.webDataRocks.googlecharts.getData(
-        { type: "column" },
-        data => this.drawChart(data),
-        data => this.drawChart(data)
-      );
-    }
+    this.child.webDataRocks.googlecharts.getData(
+      { type: "bar_h" },
+      data => this.drawChart(data),
+      data => this.drawChart(data)
+    );
   }
 
   drawChart(_data: any) {
-    var data = google.visualization.arrayToDataTable(_data.data);
-
-    var options = {
-      title: "Sales by Business Types",
-      legend: { position: "top" },
-      colors: ["#7570b3"],
-      isStacked: true
-    };
-
-    var chart = new google.visualization.ColumnChart(
-      document.getElementById("googlechart-container")
-    );
-    chart.draw(data, <google.visualization.ColumnChartOptions>options);
+    google.charts.setOnLoadCallback(()=>{
+      var data = google.visualization.arrayToDataTable(_data.data);
+      let chart = new google.visualization.BarChart(document.getElementById('chart'));
+      chart.draw(data, {
+        width: 900,
+        height: 500
+      });
+    });
   }
 }

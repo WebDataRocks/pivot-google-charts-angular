@@ -1,19 +1,15 @@
-<!-- The content below is only a placeholder and can be replaced. -->
-<h1>Angular 4 integration with WebDataRocks</h1>
-<wbr-pivot
-  #pivot1
-  [toolbar]="true"
-  [report]="pivotReport"
-  [width]="'100%'"
-  [height]="500"
-  [customizeCell]="onCustomizeCell"
-  (ready)="onPivotReady($event)"
-  (reportcomplete)="onReportComplete($event)"
->
-  WebDataRocks will appear here
-</wbr-pivot>
+<!--The content below is only a placeholder and can be replaced.-->
+<h1>Angular 16 integration with WebDataRocks and GoogleCharts</h1>
+<app-wbr-pivot #pivot1 
+          [toolbar]="true"
+          [report]="pivotReport"
+          [width]="'100%'"
+          [height]="500"
+          [customizeCell]="onCustomizeCell"
+          (ready)="onPivotReady($event)"
+          (reportcomplete)="onReportComplete()">
+    WebDataRocks will appear here
+</app-wbr-pivot>
 
-<div
-  id="googlechart-container"
-  style="height:500px; width:500px;padding-top:20px;"
-></div>
+<google-chart id="chart" [type]="'ColumnChart'"></google-chart>
+
