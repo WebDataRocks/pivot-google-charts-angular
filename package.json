@@ -2,6 +2,7 @@
   "name": "webdatarocks-google-charts-angular",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "Example of integrating the WebDataRocks Pivot Table component with Angular and Google Charts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
