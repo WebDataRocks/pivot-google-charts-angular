@@ -28,7 +28,7 @@ You can access the project at `http://localhost:4200/`.
 ## Related docs
 
 * [Integration with Angular](https://www.webdatarocks.com/doc/angular/how-to-start-online-reporting/)
-* [Integration with Google Charts](https://www.webdatarocks.com/doc/integration-with-google-charts/)
+* [Integration with Google Charts](https://www.webdatarocks.com/doc/angular/integration-with-google-charts/)
 * [Google Charts: how to customize charts](https://developers.google.com/chart/interactive/docs/customizing_charts)
 
 ## Support
