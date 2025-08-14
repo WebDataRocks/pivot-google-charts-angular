@@ -1,9 +1,11 @@
 {
   "name": "pivot-google-charts-angular",
   "version": "0.0.0",
+  "license": "MIT",
+  "description": "Example of integrating the WebDataRocks Pivot Table component with Angular and Google Charts",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -26,8 +28,7 @@
     "@angular/forms": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
-    "@webdatarocks/ngx-webdatarocks": "^1.4.19",
-    "react-google-charts": "^5.2.1",
+    "@webdatarocks/ngx-webdatarocks": "latest",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -36,8 +37,6 @@
     "@angular/build": "^20.1.3",
     "@angular/cli": "^20.1.3",
     "@angular/compiler-cli": "^20.1.0",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",

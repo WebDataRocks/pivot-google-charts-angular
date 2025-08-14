@@ -1,6 +1,9 @@
 import { Component, ViewChild } from "@angular/core";
-import { WebdatarocksPivotModule, WebdatarocksComponent } from "@webdatarocks/ngx-webdatarocks";
-import { TopMenuComponent } from '../components/top-menu/top-menu.component';
+import {
+  WebdatarocksPivotModule,
+  WebdatarocksComponent,
+} from "@webdatarocks/ngx-webdatarocks";
+import { TopMenuComponent } from "../components/top-menu/top-menu.component";
 import "@webdatarocks/webdatarocks/webdatarocks.googlecharts.js";
 
 declare let google: any;
@@ -9,10 +12,9 @@ declare let google: any;
   selector: "app-root",
   standalone: true,
   imports: [WebdatarocksPivotModule, TopMenuComponent],
-  templateUrl: "./app.html",
-  styleUrls: ["./app.css"],
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
-
 export class App {
   @ViewChild("pivot") pivotRef!: WebdatarocksComponent;
 
@@ -85,59 +87,61 @@ export class App {
 
   drawColumnChart(_data: any) {
     let data = google.visualization.arrayToDataTable(_data.data);
-    const columnChartContainer = document.getElementById("googlechartContainer");
+    const columnChartContainer = document.getElementById(
+      "googlechartContainer"
+    );
 
     const options = {
       chartArea: {
-        width: '85%',
-        height: '60%'
+        width: "80%",
+        height: "70%",
       },
       legend: {
-        position: 'right',
+        position: "right",
         textStyle: {
           fontSize: 12,
-          color: '#666'
-        }
+          color: "#666",
+        },
       },
       hAxis: {
-        title: 'Country',
+        title: "Country",
         titleTextStyle: {
           fontSize: 14,
           italic: false,
-          color: '#444',
+          color: "#444",
         },
         textStyle: {
           fontSize: 12,
-        }
+        },
       },
       vAxis: {
-        title: 'Sum of Price',
+        title: "Sum of Price",
         minValue: 0,
         gridlines: {
           count: 5,
-          color: '#eee'
+          color: "#eee",
         },
         textStyle: {
           fontSize: 12,
         },
         titleTextStyle: {
           fontSize: 14,
-          color: '#444'
-        }
+          color: "#444",
+        },
       },
-      colors: ['#52b69a'],
+      colors: ["#52b69a"],
       animation: {
         duration: 500,
-        easing: 'out',
-        startup: true
+        easing: "out",
+        startup: true,
       },
       tooltip: {
         textStyle: {
-          fontSize: 13
+          fontSize: 13,
         },
-        showColorCode: true
+        showColorCode: true,
       },
-      backgroundColor: '#fff'
+      backgroundColor: "#fff",
     };
 
     const chart = new google.visualization.ColumnChart(columnChartContainer);
