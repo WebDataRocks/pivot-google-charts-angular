@@ -1,13 +1,13 @@
 # Example of integrating WebDataRocks with the Angular framework and Google Charts 
 
-This repository contains a sample project that shows how to integrate [WebDataRocks](https://www.webdatarocks.com/) with the [Angular framework](https://angular.dev/) and [Google Charts](https://developers.google.com/chart/).
+[![WebDataRocks](https://cdn.webdatarocks.com/readmes/angular-google-charts.png)](https://www.webdatarocks.com/?r=rm_angular_google_charts)
 
-The project is also available as a [live demo](https://codesandbox.io/s/6x4zx3xljr).
+This repository contains a sample project that shows how to integrate [WebDataRocks](https://www.webdatarocks.com/?r=rm_angular_google_charts) with the [Angular framework](https://angular.dev/) and [Google Charts](https://developers.google.com/chart/).
 
 
 ## Prerequisites
 
-- [Node.js 10 or later](https://nodejs.org/en/)
+- [Node.js 20 or later](https://nodejs.org/en/)
 
 ## Run the project
 1. Download or clone this project from GitHub:
@@ -27,8 +27,8 @@ You can access the project at `http://localhost:4200/`.
 
 ## Related docs
 
-* [Integration with Angular](https://www.webdatarocks.com/doc/angular/how-to-start-online-reporting/)
-* [Integration with Google Charts](https://www.webdatarocks.com/doc/angular/integration-with-google-charts/)
+* [Integration with Angular](https://www.webdatarocks.com/doc/angular/how-to-start-online-reporting/?r=rm_angular_google_charts)
+* [Integration with Google Charts](https://www.webdatarocks.com/doc/angular/integration-with-google-charts/?r=rm_angular_google_charts)
 * [Google Charts: how to customize charts](https://developers.google.com/chart/interactive/docs/customizing_charts)
 
 ## Support
