@@ -1,16 +1,13 @@
 <div id="container">
   <app-top-menu></app-top-menu>
-  <div style="display: flex; justify-content: center; flex-wrap: wrap">
-    <div id="pivot">
-      <app-wbr-pivot
-        #pivot
-        [toolbar]="true"
-        [report]="report"
-        [height]="370"
-        (reportcomplete)="onReportComplete()"
-      >
-      </app-wbr-pivot>
-    </div>
+  <div id="chartAndPivot">
+    <app-wbr-pivot
+      #pivot
+      [toolbar]="true"
+      [report]="report"
+      [height]="370"
+      (reportcomplete)="onReportComplete()"
+    />
     <div id="googlechartContainer"></div>
   </div>
 </div>

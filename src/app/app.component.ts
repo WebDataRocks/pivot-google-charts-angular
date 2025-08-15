@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, viewChild } from "@angular/core";
 import {
   WebdatarocksPivotModule,
   WebdatarocksComponent,
@@ -16,7 +16,7 @@ declare let google: any;
   styleUrls: ["./app.component.css"],
 })
 export class App {
-  @ViewChild("pivot") pivotRef!: WebdatarocksComponent;
+  readonly pivotRef = viewChild.required<WebdatarocksComponent>("pivot");
 
   googleChartsLoaded: boolean = false;
   pivotTableReportComplete: boolean = false;
@@ -65,7 +65,7 @@ export class App {
   onReportComplete() {
     // Unsubscribing from reportcomplete
     // We need it only to track the initialization of WebDataRocks
-    this.pivotRef.webDataRocks.off("reportComplete");
+    this.pivotRef().webDataRocks.off("reportComplete");
     this.pivotTableReportComplete = true;
     // Handle the case when Google Charts is loaded before the report is complete
     if (this.googleChartsLoaded) {
@@ -74,7 +74,7 @@ export class App {
   }
 
   createChart() {
-    this.pivotRef.webDataRocks.googlecharts?.getData(
+    this.pivotRef().webDataRocks.googlecharts?.getData(
       {
         type: "column",
       },

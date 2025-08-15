@@ -1,23 +1,23 @@
 @import "@webdatarocks/webdatarocks/webdatarocks.min.css";
 
 #container {
-  padding: 80px 0 0;
+  padding: 100px 0 0;
   color: #555;
   margin: 14px 0;
   text-rendering: optimizeLegibility !important;
 }
 
-#pivot {
-  margin: 0 80px 18px;
-  width: 100%;
+#chartAndPivot {
+  margin: 0 100px;
+  padding: 10px 15px 22px;
+  background: #fff;
   position: relative;
   border: 2px solid rgb(233, 241, 243);
-  border-radius: 2px;
+  border-radius: 1.125rem;
 }
 
 #googlechartContainer {
-  width: 85%;
-  height: 300px;
+  height: 400px;
 }
 
 @media screen and (max-width: 1050px) {
