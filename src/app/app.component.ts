@@ -1,64 +1,150 @@
-import { Component, ViewChild } from "@angular/core";
-import { WebdatarocksComponent } from '@webdatarocks/ngx-webdatarocks';
-import "@webdatarocks/webdatarocks/webdatarocks.googlecharts.js"
-// import { GoogleChartComponent } from "angular-google-charts";
+import { Component, viewChild } from "@angular/core";
+import {
+  WebdatarocksPivotModule,
+  WebdatarocksComponent,
+} from "@webdatarocks/ngx-webdatarocks";
+import { TopMenuComponent } from "../components/top-menu/top-menu.component";
+import "@webdatarocks/webdatarocks/webdatarocks.googlecharts.js";
+
+declare let google: any;
 
 @Component({
   selector: "app-root",
+  standalone: true,
+  imports: [WebdatarocksPivotModule, TopMenuComponent],
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.css"],
 })
-export class AppComponent {
-  @ViewChild("pivot1") child: WebdatarocksComponent;
-
-  public pivotReport = {
-    dataSource: {
-      filename: "https://cdn.webdatarocks.com/data/data.csv"
-    },
-    slice: {
-      rows: [{ uniqueName: "Business Type" }],
-      columns: [{ uniqueName: "Measures" }],
-      measures: [{ uniqueName: "Price", aggregation: "sum" }]
-    }
-  };
-
-  onPivotReady(pivot: WebDataRocks.Pivot): void {
-    console.log("[ready] WebDataRocksPivot", this.child);
-  }
-
-  onCustomizeCell(
-    cell: WebDataRocks.CellBuilder,
-    data: WebDataRocks.CellData
-  ): void {
-    //console.log("[customizeCell] WebDataRocksPivot");
-    if (data.isClassicTotalRow) cell.addClass("fm-total-classic-r");
-    if (data.isGrandTotalRow) cell.addClass("fm-grand-total-r");
-    if (data.isGrandTotalColumn) cell.addClass("fm-grand-total-c");
-  }
+export class App {
+  readonly pivotRef = viewChild.required<WebdatarocksComponent>("pivot");
 
   googleChartsLoaded: boolean = false;
+  pivotTableReportComplete: boolean = false;
 
-  onReportComplete(): void {
-    this.child.webDataRocks.off("reportcomplete");
-    this.createGoogleChart();
+  chartData: any = [];
+
+  report = {
+    dataSource: {
+      filename: "https://cdn.webdatarocks.com/data/data.csv",
+    },
+    slice: {
+      rows: [
+        {
+          uniqueName: "Country",
+        },
+      ],
+      columns: [
+        {
+          uniqueName: "Measures",
+        },
+      ],
+      measures: [
+        {
+          uniqueName: "Price",
+          aggregation: "sum",
+        },
+      ],
+    },
+  };
+
+  ngOnInit(): void {
+    google.charts.load("current", {
+      packages: ["corechart", "bar"],
+    });
+    google.charts.setOnLoadCallback(() => this.onGoogleChartsLoaded());
   }
 
-  createGoogleChart() {
-    this.child.webDataRocks.googlecharts.getData(
-      { type: "bar_h" },
-      data => this.drawChart(data),
-      data => this.drawChart(data)
+  onGoogleChartsLoaded() {
+    this.googleChartsLoaded = true;
+    // Handle the case when the report is complete before Google Charts is loaded
+    if (this.pivotTableReportComplete) {
+      this.createChart();
+    }
+  }
+
+  onReportComplete() {
+    // Unsubscribing from reportcomplete
+    // We need it only to track the initialization of WebDataRocks
+    this.pivotRef().webDataRocks.off("reportComplete");
+    this.pivotTableReportComplete = true;
+    // Handle the case when Google Charts is loaded before the report is complete
+    if (this.googleChartsLoaded) {
+      this.createChart();
+    }
+  }
+
+  createChart() {
+    this.pivotRef().webDataRocks.googlecharts?.getData(
+      {
+        type: "column",
+      },
+      // Function called when data for the chart is ready
+      this.drawColumnChart.bind(this),
+      // Function called on report changes (filtering, sorting, etc.)
+      this.drawColumnChart.bind(this)
     );
   }
 
-  drawChart(_data: any) {
-    google.charts.setOnLoadCallback(()=>{
-      var data = google.visualization.arrayToDataTable(_data.data);
-      let chart = new google.visualization.BarChart(document.getElementById('chart'));
-      chart.draw(data, {
-        width: 900,
-        height: 500
-      });
-    });
+  drawColumnChart(_data: any) {
+    let data = google.visualization.arrayToDataTable(_data.data);
+    const columnChartContainer = document.getElementById(
+      "googlechartContainer"
+    );
+
+    const options = {
+      chartArea: {
+        width: "80%",
+        height: "70%",
+      },
+      legend: {
+        position: "right",
+        textStyle: {
+          fontSize: 12,
+          color: "#666",
+        },
+      },
+      hAxis: {
+        title: "Country",
+        titleTextStyle: {
+          fontSize: 14,
+          italic: false,
+          color: "#444",
+        },
+        textStyle: {
+          fontSize: 12,
+        },
+      },
+      vAxis: {
+        title: "Sum of Price",
+        minValue: 0,
+        gridlines: {
+          count: 5,
+          color: "#eee",
+        },
+        textStyle: {
+          fontSize: 12,
+        },
+        titleTextStyle: {
+          fontSize: 14,
+          color: "#444",
+        },
+      },
+      colors: ["#52b69a"],
+      animation: {
+        duration: 500,
+        easing: "out",
+        startup: true,
+      },
+      tooltip: {
+        textStyle: {
+          fontSize: 13,
+        },
+        showColorCode: true,
+      },
+      backgroundColor: "#fff",
+    };
+
+    const chart = new google.visualization.ColumnChart(columnChartContainer);
+    chart.draw(data, options);
   }
 }
