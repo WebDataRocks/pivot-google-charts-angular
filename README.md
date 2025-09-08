@@ -31,6 +31,12 @@ You can access the project at `http://localhost:4200/`.
 * [Integration with Google Charts](https://www.webdatarocks.com/doc/angular/integration-with-google-charts/?r=rm_angular_google_charts)
 * [Google Charts: how to customize charts](https://developers.google.com/chart/interactive/docs/customizing_charts)
 
+## WebDataRocks licensing
+
+This WebDataRocks sample project is released under the MIT license (free and open-source).
+
+[WebDataRocks](https://www.webdatarocks.com/?r=rm_angular_google_charts) is distributed under the terms and conditions of the WebDataRocks End User License Agreement: [https://www.webdatarocks.com/license-agreement/](https://www.webdatarocks.com/license-agreement/?r=rm_angular_google_charts).
+
 ## Support
 
 For WebDataRocks-related questions, bug reports, and feature requests, please [create an issue on our GitHub](https://github.com/WebDataRocks/web-pivot-table/issues).
